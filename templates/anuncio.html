@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clique e Compre - CEC {{titulo}}</title>
+</head>
+<body>
+    <h4>Cadastro de Anúncio</h4>
+    <form action="cad_anuncio" method="post"">
+        <p><label for="titulo">Digite o Título do Anúncio</label></p>
+        <p><input type="text" id="titulo" name="titulo" required></p>
+
+        <p><label for="descricao">Descreva Seu Anúncio</label></p>
+        <p><textarea id="descricao" name="descricao" rows="4" required></textarea></p>
+
+        <p><label for="categoria">Categoria</label></p>
+        <select name="categoria">
+            <option value="casaemoveis">Casa e móveis</option>
+            <option value="eletrodomesticos">Eletrodomésticos</option>
+            <option value="esporteefitness">Esporte e fitness</option>
+            <option value="ferramentas">Ferramentas</option>
+        </select>
+
+        <p><label for="produto">Produto</label></p>
+        <p><input type="text" id="produto" name="produto" ></p>
+
+        <p><label for="preco">Preço</label></p>
+        <p><input type="text" id="preco" name="preco" ></p>
+
+        <p><label for="imagem">Imagem</label></p>
+        <p><input type="file" id="imagem" name="imagem"></p>
+
+        <p><input type="submit" value="Cadastrar Anúncio"></p>
+        <p><input type="reset" value="Cancelar"></p>
+
+    </form>
+</body>
+</html>
