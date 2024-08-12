@@ -3,37 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clique e Compre - CEC {{titulo}}</title>
+    <title>Clique e Compre - CEC  - {{titulo}}</title>
 </head>
 <body>
-    <h4>Cadastro de Anúncio</h4>
-    <form action="cad_anuncio" method="post"">
-        <p><label for="titulo">Digite o Título do Anúncio</label></p>
-        <p><input type="text" id="titulo" name="titulo" required></p>
+    <h4>Cadastro de {{titulo}}</h4>
+    <form action="/anuncio/criar" method="post">
+        <p><label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome"></p>
 
-        <p><label for="descricao">Descreva Seu Anúncio</label></p>
-        <p><textarea id="descricao" name="descricao" rows="4" required></textarea></p>
+        <p><label for="desc">Descrição</label>
+        <textarea rows="4" cols="50" id="desc" name="desc"></textarea></p>       
 
-        <p><label for="categoria">Categoria</label></p>
-        <select name="categoria">
-            <option value="casaemoveis">Casa e móveis</option>
-            <option value="eletrodomesticos">Eletrodomésticos</option>
-            <option value="esporteefitness">Esporte e fitness</option>
-            <option value="ferramentas">Ferramentas</option>
-        </select>
+        <p><label for="qtd">Quantidade</label>
+        <input type="text" id="qtd" name="qtd"></p>
 
-        <p><label for="produto">Produto</label></p>
-        <p><input type="text" id="produto" name="produto" ></p>
+        <p><label for="preco">Preço</label>
+        <input type="text" id="preco" name="preco"></p>
+        
+        <p><label for="cat">Categoria</label>
+        <select id="cat" name="cat">
+            {% for categoria in categorias %} 
+                <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+            {% endfor %}
+        </select></p>
 
-        <p><label for="preco">Preço</label></p>
-        <p><input type="text" id="preco" name="preco" ></p>
+        <p><label for="usu">Usuario - N. Cadastro</label>
+        <input type="text" id="usu" name="usu"></p>
 
-        <p><label for="imagem">Imagem</label></p>
-        <p><input type="file" id="imagem" name="imagem"></p>
-
-        <p><input type="submit" value="Cadastrar Anúncio"></p>
-        <p><input type="reset" value="Cancelar"></p>
-
+        <p><input type="submit" value="Cadastrar"></p>
     </form>
+
+    <h4>Lista de {{titulo}}</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for anuncio in anuncios %}
+                <tr>
+                    <td>{{ anuncio.nome }}</td>
+                    <td>{{ anuncio.desc }}</td>
+                    <td>{{ anuncio.qtd }}</td>
+                    <td>{{ anuncio.preco }}</td>
+                    <td>{{ anuncio.cat_id }}</td>
+                    <td><a href={{url_for("editaranuncio",id=anuncio.id) }}>Editar?</a></li>
+                    <td><a href={{url_for("deletaranuncio",id=anuncio.id) }}>Deletar?</a></li>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
+
 </html>
