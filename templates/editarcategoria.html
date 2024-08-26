@@ -1,21 +1,131 @@
 <!doctype html>
-<html>
+<html lang="pt-br">
 <head> 
-    <title>Clique e Compre - CEC  - Edição de {{titulo}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clique e Compre - CEC - Edição de {{titulo}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, select {
+            font-family: Tahoma, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .btn-back {
+            background-color: #007bff;
+            color: white;
+            margin-bottom: 20px;
+            border-radius: 30px;
+            padding: 10px 20px;
+        }
+
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+
+        .form-control {
+            border-radius: 0.25rem;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            border-radius: 10px 10px 0 0;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .card-body {
+            border-radius: 0 0 10px 10px;
+        }
+
+        .form-group span.text-danger {
+            font-weight: bold;
+        }
+
+        .d-flex .btn {
+            border-radius: 30px;
+        }
+    </style>
 </head>
-
 <body>
-    <h4>Edição de {{titulo}}</h4>
-    <form action="/categoria/editar/{{categoria.id}}" method="post">
-        <p><label for="nome">Nome da Categoria</label>
-        <input type="text" id="nome" name="nome" value="{{categoria.nome}}"></p>
+    <div class="container mt-5">
+        <a href="{{ url_for('index') }}" class="btn btn-back"><i class="fas fa-home"></i> Voltar para a Página Inicial</a>
 
-        <p><label for="desc">Descrição</label>
-        <input type="text" id="desc" name="desc" value="{{categoria.desc}}"></p>  
-        
-        <p><input type="submit" value="Alterar"></p>
-    </form>
-    <a href="{{url_for('categoria')}}">Cancelar</a>
+        <div class="card bg-light p-4 mt-4 shadow-sm rounded">
+            <div class="card-header text-center">
+                <h1 class="text-primary"><i class="fas fa-user-edit"></i> Edição de {{titulo}}</h1>
+            </div>
+            
+            <div class="card-body">
+                <form action="/usuario/editar/{{usuario.id}}" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nome">Nome Completo <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="nome" name="nome" value="{{usuario.nome}}" placeholder="Digite seu nome completo" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="email">E-mail <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{usuario.email}}" placeholder="Digite seu e-mail" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="user">Username <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="user" name="user" value="{{usuario.user}}" placeholder="Digite seu nome de usuário" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="senha">Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="senha" name="senha" value="{{usuario.senha}}" placeholder="Digite sua senha" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="end">Endereço</label>
+                            <input type="text" class="form-control" id="end" name="end" value="{{usuario.end}}" placeholder="Digite seu endereço">
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label for="num">Número</label>
+                            <input type="text" class="form-control" id="num" name="num" value="{{usuario.num}}" placeholder="Digite o número">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" class="form-control" id="complemento" name="complemento" value="{{usuario.complemento}}" placeholder="Digite o complemento">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="tel">Telefone</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="tel" name="tel" value="{{usuario.tel}}" placeholder="Digite seu telefone">
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Alterar</button>
+                        <a href="{{ url_for('usuario') }}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>

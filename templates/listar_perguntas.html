@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clique e Compre - CEC - {{titulo}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .header, .main-content {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        .question-item {
+            border-bottom: 1px solid #dee2e6;
+            padding: 15px 0;
+        }
+        .question-item:last-child {
+            border-bottom: none;
+        }
+        .textarea-container {
+            margin-top: 20px;
+        }
+        .btn-submit {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #ffffff;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .text-secondary {
+            color: #6c757d !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="header text-center">
+        <h1 class="text-primary">Perguntas e Respostas - Clique e Compre - CEC</h1>
+    </header>
+
+    <main class="container mt-4">
+        <div class="main-content">
+            <h2 class="text-secondary">Perguntas e Respostas</h2>
+            
+            <!-- Pergunta 1 -->
+            <div class="question-item">
+                <p><strong>Pergunta:</strong> Como é a garantia deste produto?</p>
+                <p><strong>Resposta:</strong> O produto tem uma garantia de 1 ano contra defeitos de fabricação.</p>
+            </div>
+            
+            <!-- Pergunta 2 -->
+            <div class="question-item">
+                <p><strong>Pergunta:</strong> Este produto é compatível com outros acessórios?</p>
+                <p><strong>Resposta:</strong> Sim, o produto é compatível com a maioria dos acessórios do mercado.</p>
+            </div>
+            
+            <!-- Formulário para novas perguntas -->
+            <div class="textarea-container">
+                <h3 class="text-secondary">Faça uma nova pergunta:</h3>
+                <form action="/enviar_pergunta" method="post">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" placeholder="Digite sua pergunta aqui..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">
+                        <i class="fas fa-paper-plane"></i> Enviar Pergunta
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

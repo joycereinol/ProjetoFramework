@@ -1,32 +1,88 @@
 <!doctype html>
-<html>
+<html lang="pt-br">
 <head> 
-    <title>Clique e compre - CEC {{titulo}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clique e Compre - CEC {{titulo}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        main {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        table th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        table td:last-child {
+            text-align: right;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Clique e compre - CEC </h1>
+        <h1>Clique e Compre - CEC</h1>
     </header>
 
-    <main>
-        <h2>Relatório de Vendas</h2>
+    <main class="container">
+        <h2 class="text-primary">Relatório de Vendas</h2>
+        <a href="{{ url_for('index') }}" class="btn btn-custom"><i class="fas fa-home"></i> Voltar para a Página Inicial</a>
         <table>
-            <tr>
-                <th>Código do Anúncio:</th>
-                <th>Data:</th>               
-                <th>Produto:</th>
-                <th>Quantidade:</th>
-                <th>Preço:</th>
-            </tr>
-
-            <tr>
-                <td>0202</td>
-                <td>04/08/24</td>
-                <td>Mouse</td>
-                <td>2 Itens</td>
-                <td>R$ 100,00</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Código do Anúncio</th>
+                    <th>Data</th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0202</td>
+                    <td>04/08/24</td>
+                    <td>Mouse</td>
+                    <td>2 Itens</td>
+                    <td>R$ 100,00</td>
+                </tr>
+            </tbody>
         </table>
     </main>
 
-    </html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>

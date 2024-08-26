@@ -1,65 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clique e Compre - CEC  - {{titulo}}</title>
+    <title>Clique e Compre - CEC - {{titulo}}</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border-radius: 30px;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+        .thead-dark th {
+            background-color: #343a40;
+            color: white;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        .btn-outline-secondary {
+            border-color: #6c757d;
+            color: #6c757d;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h4>Cadastro de {{titulo}}</h4>
-    <form action="/anuncio/criar" method="post">
-        <p><label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome"></p>
+    <header>
+        <h1>Clique e Compre - CEC</h1>
+    </header>
 
-        <p><label for="desc">Descrição</label>
-        <textarea rows="4" cols="50" id="desc" name="desc"></textarea></p>       
+    <div class="container mt-5">
+        <a href="{{ url_for('index') }}" class="btn btn-custom"><i class="fas fa-home"></i> Voltar para a Página Inicial</a>
 
-        <p><label for="qtd">Quantidade</label>
-        <input type="text" id="qtd" name="qtd"></p>
+        <div class="card shadow-sm mt-5 col-md-8 mx-auto">
+            <div class="card-header text-center">
+                <h4><i class="fas fa-plus-circle"></i> Cadastro de {{titulo}}</h4>
+            </div>
+            <div class="card-body">
+                <form action="/anuncio/criar" method="post">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do anúncio">
+                    </div>
 
-        <p><label for="preco">Preço</label>
-        <input type="text" id="preco" name="preco"></p>
-        
-        <p><label for="cat">Categoria</label>
-        <select id="cat" name="cat">
-            {% for categoria in categorias %} 
-                <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
-            {% endfor %}
-        </select></p>
+                    <div class="form-group">
+                        <label for="desc">Descrição</label>
+                        <textarea rows="4" class="form-control" id="desc" name="desc" placeholder="Descrição do anúncio"></textarea>
+                    </div>
 
-        <p><label for="usu">Usuario - N. Cadastro</label>
-        <input type="text" id="usu" name="usu"></p>
+                    <div class="form-group">
+                        <label for="qtd">Quantidade</label>
+                        <input type="number" class="form-control" id="qtd" name="qtd" placeholder="Quantidade disponível">
+                    </div>
 
-        <p><input type="submit" value="Cadastrar"></p>
-    </form>
+                    <div class="form-group">
+                        <label for="preco">Preço</label>
+                        <input type="text" class="form-control" id="preco" name="preco" placeholder="Preço do produto">
+                    </div>
 
-    <h4>Lista de {{titulo}}</h4>
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Quantidade</th>
-                <th>Preço</th>
-                <th>Categoria</th>
-                <th>Editar</th>
-                <th>Deletar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for anuncio in anuncios %}
-                <tr>
-                    <td>{{ anuncio.nome }}</td>
-                    <td>{{ anuncio.desc }}</td>
-                    <td>{{ anuncio.qtd }}</td>
-                    <td>{{ anuncio.preco }}</td>
-                    <td>{{ anuncio.cat_id }}</td>
-                    <td><a href={{url_for("editaranuncio",id=anuncio.id) }}>Editar?</a></li>
-                    <td><a href={{url_for("deletaranuncio",id=anuncio.id) }}>Deletar?</a></li>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                    <div class="form-group">
+                        <label for="cat">Categoria</label>
+                        <select class="form-control" id="cat" name="cat">
+                            {% for categoria in categorias %} 
+                                <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usu">Número do Usuário</label>
+                        <input type="text" class="form-control" id="usu" name="usu" placeholder="Número de cadastro do usuário">
+                    </div>
+
+                    <button type="submit" class="btn btn-success mt-3"><i class="fas fa-check"></i> Cadastrar</button>
+                    <button type="reset" class="btn btn-outline-secondary mt-3"><i class="fas fa-broom"></i> Limpar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-container mt-5">
+            <h4 class="text-primary text-center"><i class="fas fa-list"></i> Lista de {{titulo}}</h4>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                            <th>Categoria</th>
+                            <th>Editar</th>
+                            <th>Deletar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for anuncio in anuncios %}
+                            <tr>
+                                <td>{{ anuncio.nome }}</td>
+                                <td>{{ anuncio.desc }}</td>
+                                <td>{{ anuncio.qtd }}</td>
+                                <td>{{ anuncio.preco }}</td>
+                                <td>{{ anuncio.cat_id }}</td>
+                                <td><a href="{{ url_for('editaranuncio', id=anuncio.id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a></td>
+                                <td><a href="{{ url_for('deletaranuncio', id=anuncio.id) }}" onclick="return confirm('Tem certeza que deseja deletar?');" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Deletar</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>

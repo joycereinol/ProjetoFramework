@@ -1,39 +1,97 @@
 <!doctype html>
-<html>
+<html lang="pt-br">
 <head> 
-    <title>Clique e Compre - CEC  - Edição de {{titulo}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clique e Compre - CEC - Edição de {{titulo}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
-    <h4>Edição de {{titulo}}</h4>
-    <form action="/usuario/editar/{{usuario.id}} " method="post">
-        <p><label for="nome">Nome Completo</label>
-        <input type="text" id="nome" name="nome" value="{{usuario.nome}}"></p>
+    <header>
+        <h1>Clique e Compre - CEC</h1>
+    </header>
 
-        <p><label for="email">E-mail</label>
-        <input type="text" id="email" name="email" value="{{usuario.email}}"></p>  
-        
-        <p><label for="user">Username</label>
-        <input type="text" id="user" name="user" value="{{usuario.user}}"></p>
+    <main class="container">
+        <h4 class="text-primary mb-4">Edição de {{titulo}}</h4>
+        <form action="/usuario/editar/{{usuario.id}}" method="post">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{usuario.nome}}" required>
+            </div>
 
-        <p><label for="senha">Password</label>
-        <input type="text" id="senha" name="senha" value="{{usuario.senha}}"></p>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{usuario.email}}" required>
+            </div>  
+            
+            <div class="form-group">
+                <label for="user">Username</label>
+                <input type="text" class="form-control" id="user" name="user" value="{{usuario.user}}" required>
+            </div>
 
-        <p><label for="end">Endereço</label>
-        <input type="text" id="end" name="end" value="{{usuario.end}}"></p>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" value="{{usuario.senha}}" required>
+            </div>
 
-        <p><label for="num">Número</label>
-        <input type="text" id="num" name="num" value="{{usuario.num}}"></p>
+            <div class="form-group">
+                <label for="end">Endereço</label>
+                <input type="text" class="form-control" id="end" name="end" value="{{usuario.end}}" required>
+            </div>
 
-        <p><label for="complemento">Complemento</label>
-        <input type="text" id="complemento" name="complemento" value="{{usuario.complemento}}"></p>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="num">Número</label>
+                    <input type="text" class="form-control" id="num" name="num" value="{{usuario.num}}" required>
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" class="form-control" id="complemento" name="complemento" value="{{usuario.complemento}}">
+                </div>
+            </div>
 
-        <p><label for="tel">Telefone</label>
-        <input type="text" id="tel" name="tel" value="{{usuario.tel}}"></p>
-        
-        <p><input type="submit" value="Alterar"></p>
-    </form>
-    <a href={{url_for("usuario")}}> Cancelar</a>
+            <div class="form-group">
+                <label for="tel">Telefone</label>
+                <input type="text" class="form-control" id="tel" name="tel" value="{{usuario.tel}}" required>
+            </div>
+
+            <button type="submit" class="btn btn-custom">Alterar</button>
+            <a href="{{ url_for('usuario') }}" class="btn btn-outline-secondary">Cancelar</a>
+        </form>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>
